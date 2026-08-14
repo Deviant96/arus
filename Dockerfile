@@ -14,8 +14,6 @@ COPY . .
 ENV NODE_ENV=production
 ENV NUXT_TELEMETRY_DISABLED=1
 ENV NUXT_DOCKER_BUILD=1
-# Keep the heap from eating a 1 GB VPS into swap during `nuxt build`.
-ENV NODE_OPTIONS="--max-old-space-size=512"
 RUN npm run build
 
 FROM node:22-alpine AS xlsx-deps
