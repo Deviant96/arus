@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       __ARUS_ALLOW_PGLITE__: process.env.NUXT_DOCKER_BUILD === '1' ? 'false' : 'true',
     },
     externals: {
-      external: ['exceljs', 'postgres', '@electric-sql/pglite'],
+      external: ['postgres'],
     },
   },
 
