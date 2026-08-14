@@ -49,12 +49,20 @@ npm test             # unit + integration tests
 
 ```bash
 cp .env.example .env
-# set NUXT_SESSION_PASSWORD, NUXT_AI_ENCRYPTION_KEY, NUXT_PUBLIC_APP_URL
+# set NUXT_SESSION_PASSWORD, NUXT_AI_ENCRYPTION_KEY
+# set NUXT_PUBLIC_APP_URL to the URL you will open (must match APP_PORT)
 
 docker compose up -d --build
 ```
 
-This starts PostgreSQL 16 and the Nuxt app on port 3000. Migrations run on boot.
+This starts PostgreSQL 16 and the Nuxt app on host port **3100** (mapped to the container's 3000). Migrations run on boot.
+
+If 3100 is taken too, set `APP_PORT` in `.env` and point `NUXT_PUBLIC_APP_URL` at the same port:
+
+```
+APP_PORT=8088
+NUXT_PUBLIC_APP_URL=http://localhost:8088
+```
 
 To seed the demo account against Docker Postgres:
 
