@@ -1,0 +1,14 @@
+.git
+.github
+.nuxt
+.output
+.nitro
+.data
+node_modules
+dist
+coverage
+.env
+.env.*
+*.log
+.DS_Store
+README.md
