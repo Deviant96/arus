@@ -1,0 +1,53 @@
+{
+  "name": "mpst",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx server/database/migrate.ts",
+    "db:seed": "tsx server/database/seed.ts",
+    "db:reset": "tsx server/database/reset.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.5",
+    "@nuxt/ui": "^4.10.0",
+    "@pinia/nuxt": "^1.0.2",
+    "@vite-pwa/nuxt": "^1.1.1",
+    "dompurify": "^3.4.13",
+    "drizzle-orm": "^0.45.2",
+    "echarts": "^6.1.0",
+    "exceljs": "^4.4.0",
+    "idb": "^8.0.3",
+    "marked": "^18.0.9",
+    "nuxt": "^4.5.2",
+    "nuxt-auth-utils": "^0.5.30",
+    "papaparse": "^5.6.0",
+    "pinia": "^4.0.3",
+    "postgres": "^3.4.9",
+    "vue-echarts": "^8.1.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.123",
+    "@iconify-json/simple-icons": "^1.2.93",
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/papaparse": "^5.5.2",
+    "@vue/test-utils": "^2.4.11",
+    "drizzle-kit": "^0.31.10",
+    "happy-dom": "^20.11.2",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
+  }
+}

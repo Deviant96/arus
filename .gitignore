@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.output/
+.nuxt/
+.nitro/
+.data/
+dist/
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.cookies.txt
+.login-out.json
+.dash.json
+
+# Test / coverage
+coverage/
+
+# PGlite
+pglite-debug.log

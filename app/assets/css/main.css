@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@plugin "@tailwindcss/typography";
+
+@theme static {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --ui-radius: 0.625rem;
+}
+
+.dark {
+  /* Deep, calm banking-dark surface scale */
+  --ui-bg: #0a0a0b;
+  --ui-bg-muted: #111113;
+  --ui-bg-elevated: #17171a;
+  --ui-bg-accented: #1e1e22;
+  --ui-border: #212126;
+  --ui-border-muted: #1a1a1e;
+  --ui-border-accented: #2a2a30;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+/* Monetary figures always use tabular digits so columns line up */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.money-income {
+  color: var(--ui-success);
+}
+
+.money-expense {
+  color: var(--ui-text);
+}
+
+.money-transfer {
+  color: var(--ui-text-muted);
+}
+
+/* Card idiom used across the app */
+.panel {
+  background: var(--ui-bg-muted);
+  border: 1px solid var(--ui-border-muted);
+  border-radius: calc(var(--ui-radius) * 1.6);
+}
+
+.panel-hover {
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.panel-hover:hover {
+  border-color: var(--ui-border-accented);
+  background: var(--ui-bg-elevated);
+}
+
+/* Hide number input spinners */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Thin scrollbars for chip rows */
+.scroll-thin {
+  scrollbar-width: none;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  display: none;
+}
+
+/* Bottom safe area for mobile nav */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-up {
+  animation: fade-slide-up 0.25s ease both;
+}
