@@ -51,6 +51,7 @@ export async function runMigrations(migrationsFolder?: string) {
   }
 
   throw new Error('This build requires a postgres:// DATABASE_URL (PGlite is not included).')
+}
 
 // Run directly as a CLI script
 if (process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('database/migrate.ts')) {
