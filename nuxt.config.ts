@@ -4,7 +4,12 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui', '@pinia/nuxt', 'nuxt-auth-utils', '@vite-pwa/nuxt'],
 
-  css: ['~/assets/css/main.css'],
+  css: ['@fontsource-variable/inter', '~/assets/css/main.css'],
+
+  // Do not fetch Inter from fonts.bunny.net at build time (fails on many VPS).
+  ui: {
+    fonts: false,
+  },
 
   colorMode: {
     preference: 'dark',
@@ -65,13 +70,6 @@ export default defineNuxtConfig({
       globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
       navigateFallback: '/',
       navigateFallbackDenylist: [/^\/api\//],
-      runtimeCaching: [
-        {
-          urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
-          handler: 'CacheFirst',
-          options: { cacheName: 'google-fonts', expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 } },
-        },
-      ],
     },
     client: {
       installPrompt: true,

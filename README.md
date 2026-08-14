@@ -55,7 +55,7 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
-This starts PostgreSQL 16 and the Nuxt app on host port **3100** (mapped to the container's 3000). Migrations run on boot.
+This starts PostgreSQL 16 and the Nuxt app on host port **3100** (mapped to the container's 3000). Migrations run on boot. Inter is bundled in the image, so the build does not download fonts from the internet.
 
 If 3100 is taken too, set `APP_PORT` in `.env` and point `NUXT_PUBLIC_APP_URL` at the same port:
 
