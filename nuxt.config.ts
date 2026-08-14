@@ -58,7 +58,9 @@ export default defineNuxtConfig({
       __ARUS_ALLOW_PGLITE__: process.env.NUXT_DOCKER_BUILD === '1' ? 'false' : 'true',
     },
     externals: {
-      external: ['postgres'],
+      // Leave ExcelJS unbundled so Nitro does not parse it (OOM on a 512 MB heap).
+      // The Docker runner copies the package in separately.
+      external: ['exceljs', 'postgres'],
     },
   },
 
