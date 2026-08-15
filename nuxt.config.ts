@@ -50,13 +50,16 @@ export default defineNuxtConfig({
     compressPublicAssets: false,
     experimental: {
       tasks: false,
+      // Faster module resolution; we copy runtime node_modules in Docker.
+      legacyExternals: true,
     },
     // Docker sets NUXT_DOCKER_BUILD=1 so PGlite (WASM) is not traced into the server bundle.
     replace: {
       __ARUS_ALLOW_PGLITE__: process.env.NUXT_DOCKER_BUILD === '1' ? 'false' : 'true',
     },
     externals: {
-      // Leave ExcelJS unbundled; the Docker runner copies the package in separately.
+      // Skip @vercel/nft walking node_modules (hours on a 1 vCPU VPS).
+      trace: false,
       external: ['exceljs'],
     },
   },
@@ -73,6 +76,8 @@ export default defineNuxtConfig({
   },
 
   pwa: {
+    // Workbox + Nitro together exhaust a small VPS. Offline still works via IndexedDB.
+    disable: process.env.NUXT_DOCKER_BUILD === '1',
     registerType: 'autoUpdate',
     manifest: {
       name: 'Arus — Spending Tracker',

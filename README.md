@@ -57,7 +57,7 @@ docker compose up -d --build
 
 This starts PostgreSQL 16 and the Nuxt app on host port **3100** (mapped to the container's 3000). Migrations run on boot. Inter is bundled in the image, so the build does not download fonts from the internet.
 
-On a small VPS the image build is CPU-heavy. If it sits on `Building Nuxt Nitro server` with CPU pegged, stop it (`Ctrl+C`) and pull the latest — Docker builds skip PGlite and Nitro minification so that step can finish.
+On a small VPS, `npm run build` used to sit on `Building Nuxt Nitro server` for hours (file-tracing every `node_modules` file, often while swapping). Docker builds now skip that trace and copy production `node_modules` into the image instead. If an old build is still stuck there, stop it — waiting will not finish it.
 
 If 3100 is taken too, set `APP_PORT` in `.env` and point `NUXT_PUBLIC_APP_URL` at the same port:
 
