@@ -44,19 +44,13 @@ export async function runMigrations(migrationsFolder?: string) {
     return
   }
 
-  const { PGlite } = await import('@electric-sql/pglite')
-  const { drizzle } = await import('drizzle-orm/pglite')
-  const { migrate } = await import('drizzle-orm/pglite/migrator')
-  const { mkdirSync } = await import('node:fs')
-  const dataDir = url.replace(/^pglite:\/\//, '') || './.data/pglite'
-  mkdirSync(dataDir, { recursive: true })
-  const pglite = new PGlite(dataDir)
-  try {
-    await migrate(drizzle(pglite), { migrationsFolder: folder })
+  if (typeof __ARUS_ALLOW_PGLITE__ === 'undefined' || __ARUS_ALLOW_PGLITE__) {
+    const { migratePglite } = await import('./embedded')
+    await migratePglite(folder, url)
+    return
   }
-  finally {
-    await pglite.close()
-  }
+
+  throw new Error('This build requires a postgres:// DATABASE_URL (PGlite is not included).')
 }
 
 // Run directly as a CLI script

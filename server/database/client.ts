@@ -29,14 +29,12 @@ async function createDb(): Promise<Db> {
     return drizzle(client, { schema }) as unknown as Db
   }
 
-  // Embedded PGlite for local development
-  const { PGlite } = await import('@electric-sql/pglite')
-  const { drizzle } = await import('drizzle-orm/pglite')
-  const { mkdirSync } = await import('node:fs')
-  const dataDir = url.replace(/^pglite:\/\//, '') || './.data/pglite'
-  mkdirSync(dataDir, { recursive: true })
-  const pglite = new PGlite(dataDir)
-  return drizzle(pglite, { schema }) as unknown as Db
+  if (typeof __ARUS_ALLOW_PGLITE__ === 'undefined' || __ARUS_ALLOW_PGLITE__) {
+    const { createPgliteDb } = await import('./embedded')
+    return createPgliteDb(url)
+  }
+
+  throw new Error('This build requires a postgres:// DATABASE_URL (PGlite is not included).')
 }
 
 export async function useDb(): Promise<Db> {
