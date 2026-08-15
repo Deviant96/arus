@@ -6,7 +6,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build && node scripts/copy-server-unhead.mjs",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -36,8 +36,13 @@
     "papaparse": "^5.6.0",
     "pinia": "^4.0.3",
     "postgres": "^3.4.9",
+    "unhead": "^3.3.2",
     "vue-echarts": "^8.1.0",
     "zod": "^4.4.3"
+  },
+  "overrides": {
+    "unhead": "^3.3.2",
+    "@unhead/vue": "^3.3.2"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.123",
