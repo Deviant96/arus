@@ -50,17 +50,14 @@ export default defineNuxtConfig({
     compressPublicAssets: false,
     experimental: {
       tasks: false,
-      // Avoids a node-externals cache miss that makes Rollup re-resolve every module.
-      legacyExternals: true,
     },
     // Docker sets NUXT_DOCKER_BUILD=1 so PGlite (WASM) is not traced into the server bundle.
     replace: {
       __ARUS_ALLOW_PGLITE__: process.env.NUXT_DOCKER_BUILD === '1' ? 'false' : 'true',
     },
     externals: {
-      // Leave ExcelJS unbundled so Nitro does not parse it (OOM on a 512 MB heap).
-      // The Docker runner copies the package in separately.
-      external: ['exceljs', 'postgres'],
+      // Leave ExcelJS unbundled; the Docker runner copies the package in separately.
+      external: ['exceljs'],
     },
   },
 
