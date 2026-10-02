@@ -55,7 +55,7 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
-This starts the Nuxt app with **host networking** on port **3100**, talking to **native PostgreSQL** on the VPS at `127.0.0.1:5432` (database/user/password `arus`/`arus`/`arus`). Migrations run on boot. Inter is bundled in the image, so the build does not download fonts from the internet.
+This starts the Nuxt app with **host networking** on port **3100**, talking to **native PostgreSQL** on the VPS at `127.0.0.1:5434` (database/user/password `arus`/`arus`/`arus`). Migrations run on boot. Inter is bundled in the image, so the build does not download fonts from the internet.
 
 Create the role and database on the host first if needed:
 
@@ -76,7 +76,7 @@ NUXT_PUBLIC_APP_URL=http://localhost:8088
 To seed the demo account against Docker Postgres:
 
 ```bash
-NUXT_DATABASE_URL=postgres://arus:arus@localhost:5432/arus npm run db:seed
+NUXT_DATABASE_URL=postgres://arus:arus@localhost:5434/arus npm run db:seed
 ```
 
 ## Google sign-in
