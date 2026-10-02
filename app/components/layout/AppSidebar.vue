@@ -25,12 +25,12 @@ const userMenuItems = computed(() => [[
 </script>
 
 <template>
-  <aside class="hidden lg:flex w-60 shrink-0 flex-col border-r border-default bg-muted/30 h-screen sticky top-0">
+  <aside class="hidden lg:flex w-60 shrink-0 flex-col border-r border-default bg-[var(--snug-surface-muted)]/60 h-screen sticky top-0">
     <div class="flex items-center gap-2.5 px-5 h-16">
-      <span class="flex items-center justify-center size-8 rounded-xl bg-primary/15 text-primary">
+      <span class="flex items-center justify-center size-8 rounded-2xl snug-brand-well">
         <UIcon name="i-lucide-waves" class="size-4.5" />
       </span>
-      <span class="font-semibold text-[15px] tracking-tight">Arus</span>
+      <span class="font-bold text-[15px] tracking-tight">Arus</span>
     </div>
 
     <div class="px-3 pb-2">
@@ -38,11 +38,11 @@ const userMenuItems = computed(() => [[
         block
         size="lg"
         icon="i-lucide-plus"
-        class="justify-between rounded-xl"
+        class="justify-between"
         @click="openQuickAdd()"
       >
         <span class="flex-1 text-left">Quick Add</span>
-        <span class="text-[11px] font-normal opacity-70 border border-white/25 rounded px-1.5 py-0.5">Ctrl N</span>
+        <span class="text-[11px] font-normal opacity-70 border border-white/25 rounded-full px-1.5 py-0.5">Ctrl N</span>
       </UButton>
     </div>
 
@@ -51,19 +51,23 @@ const userMenuItems = computed(() => [[
         v-for="item in nav"
         :key="item.to"
         :to="item.to"
-        class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors"
+        class="flex items-center gap-3 rounded-full px-3 py-2 text-sm transition-colors"
         :class="isActive(item.to)
-          ? 'bg-elevated text-highlighted font-medium'
-          : 'text-muted hover:text-highlighted hover:bg-elevated/60'"
+          ? 'bg-[var(--snug-sage)]/45 text-highlighted font-semibold'
+          : 'text-muted hover:text-highlighted hover:bg-elevated/80'"
       >
-        <UIcon :name="item.icon" class="size-4.5 shrink-0" :class="isActive(item.to) ? 'text-primary' : ''" />
+        <UIcon
+          :name="item.icon"
+          class="size-4.5 shrink-0"
+          :class="isActive(item.to) ? 'text-[var(--snug-success-ink)]' : ''"
+        />
         {{ item.label }}
       </NuxtLink>
     </nav>
 
     <div class="border-t border-default p-3">
       <UDropdownMenu :items="userMenuItems" :content="{ side: 'top' }" :ui="{ content: 'w-52' }">
-        <button class="flex w-full items-center gap-3 rounded-lg px-2 py-2 hover:bg-elevated/60 transition-colors text-left">
+        <button class="flex w-full items-center gap-3 rounded-2xl px-2 py-2 hover:bg-elevated/80 transition-colors text-left">
           <UAvatar :src="user?.avatarUrl ?? undefined" :alt="user?.name ?? 'User'" size="sm" />
           <span class="flex-1 min-w-0">
             <span class="block truncate text-sm font-medium">{{ user?.name }}</span>

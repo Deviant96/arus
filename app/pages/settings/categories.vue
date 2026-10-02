@@ -21,17 +21,18 @@ const ICONS = [
   'i-lucide-repeat', 'i-lucide-banknote', 'i-lucide-gift', 'i-lucide-plane', 'i-lucide-home', 'i-lucide-shirt',
   'i-lucide-smartphone', 'i-lucide-dumbbell', 'i-lucide-paw-print', 'i-lucide-circle-ellipsis', 'i-lucide-tag',
 ]
-const COLORS = ['#f97316', '#eab308', '#22c55e', '#10b981', '#06b6d4', '#3b82f6', '#8b5cf6', '#a855f7', '#ec4899', '#ef4444', '#64748b', '#84cc16']
+const COLORS = ['#E8A07A', '#A8C5A8', '#A8B8C8', '#C8B8D8', '#F0E0A8', '#E8B0B0', '#D4C4A8', '#8FB8B0', '#C4A882', '#9A9388', '#B8A0C8', '#7A9E8E']
 
 function openCreate() {
   editing.value = null
-  Object.assign(form, { name: '', icon: 'i-lucide-tag', color: '#64748b' })
+  Object.assign(form, { name: '', icon: 'i-lucide-tag', color: '#D4C4A8' })
   formOpen.value = true
 }
 
 function openEdit(c: CategoryDto) {
   editing.value = c
-  Object.assign(form, { name: c.name, icon: c.icon ?? 'i-lucide-tag', color: c.color ?? '#64748b' })
+  Object.assign(form, { name: c.name, icon: c.icon ?? 'i-lucide-tag', color: c.color ?? '#D4C4A8' })
+
   formOpen.value = true
 }
 

@@ -1,9 +1,9 @@
 # Arus Design System — “Banking Dark”
 
-Reusable technical reference for the current Arus UI/theme (as of 2026-10).  
-Use this doc to **restore** the look after a redesign, or to **port** the same visual language to another app.
+Reusable technical reference for the previous Arus UI/theme (“Banking Dark”, as of 2026-10).  
+Use this doc to **restore** the dark look, or to **port** that visual language to another app.
 
-**Alternate target theme:** [`snug-simple.md`](./snug-simple.md) — Snug Simple (2026 warm/pastel comfort UI) for a future redesign.
+**Shipping theme now:** [`snug-simple.md`](./snug-simple.md) — Snug Simple (warm/pastel comfort UI).
 
 **Scope:** presentation only (tokens, chrome, idioms). Not product logic.
 

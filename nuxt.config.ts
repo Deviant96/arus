@@ -4,16 +4,16 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui', '@pinia/nuxt', 'nuxt-auth-utils', '@vite-pwa/nuxt'],
 
-  css: ['@fontsource-variable/inter', '~/assets/css/main.css'],
+  css: ['@fontsource-variable/nunito', '~/assets/css/main.css'],
 
-  // Do not fetch Inter from fonts.bunny.net at build time (fails on many VPS).
+  // Bundle Nunito locally — do not fetch fonts from a CDN at build time (fails on many VPS).
   ui: {
     fonts: false,
   },
 
   colorMode: {
-    preference: 'dark',
-    fallback: 'dark',
+    preference: 'light',
+    fallback: 'light',
   },
 
   app: {
@@ -21,12 +21,13 @@ export default defineNuxtConfig({
       title: 'Arus — Personal Spending Tracker',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-        { name: 'theme-color', content: '#09090b' },
+        { name: 'theme-color', content: '#F4F0E8' },
         { name: 'description', content: 'Fast personal spending tracker with installments, budgets and reports.' },
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
+
 
   runtimeConfig: {
     databaseUrl: '', // NUXT_DATABASE_URL
@@ -78,8 +79,9 @@ export default defineNuxtConfig({
       name: 'Arus — Spending Tracker',
       short_name: 'Arus',
       description: 'Fast personal spending tracker',
-      theme_color: '#09090b',
-      background_color: '#09090b',
+      theme_color: '#F4F0E8',
+      background_color: '#F4F0E8',
+
       display: 'standalone',
       start_url: '/',
       icons: [

@@ -3,23 +3,71 @@
 @plugin "@tailwindcss/typography";
 
 @theme static {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Nunito Variable', 'Nunito', ui-rounded, ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --ui-radius: 0.625rem;
+  color-scheme: light;
+
+  /* Snug Simple tokens */
+  --snug-canvas: #F4F0E8;
+  --snug-canvas-soft: #FAF7F1;
+  --snug-surface: #FFFCF7;
+  --snug-surface-muted: #EFE9DF;
+  --snug-border: #E4DDD0;
+  --snug-ink: #1C1917;
+  --snug-ink-muted: #6B655D;
+  --snug-ink-dimmed: #9A9388;
+  --snug-cta: #1C1917;
+  --snug-cta-fg: #FFFCF7;
+
+  --snug-terracotta: #E8A07A;
+  --snug-sage: #A8C5A8;
+  --snug-dusty-blue: #A8B8C8;
+  --snug-lavender: #C8B8D8;
+  --snug-butter: #F0E0A8;
+  --snug-rose: #E8B0B0;
+  --snug-sand: #D4C4A8;
+
+  --snug-success-ink: #3D6B4F;
+  --snug-warning-ink: #C4922A;
+  --snug-error-ink: #B85C5C;
+  --snug-info-ink: #4A6A8A;
+
+  --snug-radius-control: 1rem;
+  --snug-radius-card: 1.5rem;
+  --snug-radius-pill: 999px;
+
+  /* Nuxt UI surface + radius overrides (light cream shell).
+     Keep base radius moderate — Nuxt UI multiplies this for cards/modals. */
+  --ui-radius: 0.75rem;
+  --ui-bg: var(--snug-canvas);
+  --ui-bg-muted: var(--snug-surface-muted);
+  --ui-bg-elevated: var(--snug-surface);
+  --ui-bg-accented: #E8E0D4;
+  --ui-border: var(--snug-border);
+  --ui-border-muted: #EDE6DA;
+  --ui-border-accented: #D6CFC2;
+  --ui-text: var(--snug-ink);
+  --ui-text-dimmed: var(--snug-ink-dimmed);
+  --ui-text-muted: var(--snug-ink-muted);
+  --ui-text-toned: #524C45;
+  --ui-text-highlighted: var(--snug-ink);
+  --ui-text-inverted: var(--snug-cta-fg);
+
+  /* Readable status inks on cream (override default saturations) */
+  --ui-success: var(--snug-success-ink);
+  --ui-warning: var(--snug-warning-ink);
+  --ui-error: var(--snug-error-ink);
+  --ui-info: var(--snug-info-ink);
+
+  /* Charcoal primary CTAs (stone scale remapped toward ink) */
+  --ui-primary: var(--snug-ink);
+  --color-primary-400: #44403c;
+  --color-primary-500: #1C1917;
+  --color-primary-600: #0c0a09;
 }
 
-.dark {
-  /* Deep, calm banking-dark surface scale */
-  --ui-bg: #0a0a0b;
-  --ui-bg-muted: #111113;
-  --ui-bg-elevated: #17171a;
-  --ui-bg-accented: #1e1e22;
-  --ui-border: #212126;
-  --ui-border-muted: #1a1a1e;
-  --ui-border-accented: #2a2a30;
-}
 
 html {
   scroll-behavior: smooth;
@@ -28,6 +76,14 @@ html {
 body {
   -webkit-tap-highlight-color: transparent;
   text-rendering: optimizeLegibility;
+  background: var(--snug-canvas);
+  color: var(--snug-ink);
+}
+
+/* Soft focus ring */
+:focus-visible {
+  outline: 2px solid var(--snug-terracotta);
+  outline-offset: 2px;
 }
 
 /* Monetary figures always use tabular digits so columns line up */
@@ -37,31 +93,51 @@ body {
 }
 
 .money-income {
-  color: var(--ui-success);
+  color: var(--snug-success-ink);
 }
 
 .money-expense {
-  color: var(--ui-text);
+  color: var(--snug-ink);
 }
 
 .money-transfer {
-  color: var(--ui-text-muted);
+  color: var(--snug-ink-muted);
 }
 
-/* Card idiom used across the app */
+/* Soft floating card idiom */
 .panel {
-  background: var(--ui-bg-muted);
-  border: 1px solid var(--ui-border-muted);
-  border-radius: calc(var(--ui-radius) * 1.6);
+  background: var(--snug-surface);
+  border: 1px solid var(--snug-border);
+  border-radius: var(--snug-radius-card);
+  box-shadow: 0 8px 24px -12px rgba(28, 25, 23, 0.10);
+}
+
+.panel-pastel {
+  background: var(--panel-tint, var(--snug-butter));
+  border: none;
+  border-radius: var(--snug-radius-card);
+  box-shadow: none;
 }
 
 .panel-hover {
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .panel-hover:hover {
-  border-color: var(--ui-border-accented);
-  background: var(--ui-bg-elevated);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -12px rgba(28, 25, 23, 0.14);
+}
+
+/* Sage FAB utility */
+.snug-fab {
+  background: var(--snug-sage);
+  color: var(--snug-ink);
+  box-shadow: 0 10px 24px -8px rgba(61, 107, 79, 0.35);
+}
+
+.snug-brand-well {
+  background: color-mix(in srgb, var(--snug-terracotta) 22%, transparent);
+  color: #9A5A38;
 }
 
 /* Hide number input spinners */
@@ -93,7 +169,7 @@ input[type='number'] {
 @keyframes fade-slide-up {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
 
   to {
@@ -103,5 +179,21 @@ input[type='number'] {
 }
 
 .fade-slide-up {
-  animation: fade-slide-up 0.25s ease both;
+  animation: fade-slide-up 0.28s ease both;
+}
+
+.snug-press:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-slide-up,
+  .snug-fade-up {
+    animation: none;
+  }
+
+  .panel-hover,
+  .snug-press {
+    transition: none;
+  }
 }

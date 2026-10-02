@@ -72,7 +72,8 @@ defineExpose({ focus })
 
 <template>
   <div
-    class="flex items-center gap-3 rounded-2xl border border-default bg-elevated/50 px-4 focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/20 transition-all"
+    class="flex items-center gap-3 rounded-3xl border border-default bg-[var(--snug-surface)] px-4 focus-within:border-[var(--snug-terracotta)] focus-within:ring-2 focus-within:ring-[var(--snug-terracotta)]/25 transition-all"
+
     :class="size === 'xl' ? 'py-4' : 'py-2.5'"
   >
     <span class="text-muted font-medium" :class="size === 'xl' ? 'text-xl' : 'text-base'">{{ symbol }}</span>

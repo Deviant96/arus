@@ -42,7 +42,8 @@ const amountClass = computed(() => ({
 <template>
   <button
     type="button"
-    class="flex w-full items-center gap-3 px-3 sm:px-4 py-2.5 text-left rounded-xl hover:bg-elevated/60 transition-colors group"
+    class="flex w-full items-center gap-3 px-3 sm:px-4 py-2.5 text-left rounded-2xl hover:bg-[var(--snug-surface-muted)] transition-colors group"
+
     @click="emit('edit', tx)"
   >
     <UiCategoryBadge
@@ -50,9 +51,14 @@ const amountClass = computed(() => ({
       :category="tx.category"
       :fallback-icon="tx.type === 'income' ? 'i-lucide-arrow-down-left' : 'i-lucide-receipt'"
     />
-    <span v-else class="flex items-center justify-center size-9 rounded-xl bg-info/10 text-info shrink-0">
+    <span
+      v-else
+      class="flex items-center justify-center size-9 rounded-2xl shrink-0"
+      style="background: color-mix(in srgb, var(--snug-dusty-blue) 35%, white); color: var(--snug-info-ink);"
+    >
       <UIcon name="i-lucide-arrow-left-right" class="size-4.5" />
     </span>
+
 
     <span class="flex-1 min-w-0">
       <span class="block truncate text-sm font-medium text-highlighted">{{ title }}</span>

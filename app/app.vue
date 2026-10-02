@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
-colorMode.preference = 'dark'
+colorMode.preference = 'light'
 </script>
 
 <template>

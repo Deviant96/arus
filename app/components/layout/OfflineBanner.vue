@@ -8,7 +8,8 @@ const sync = useSyncStore()
   <div>
     <div
       v-if="!sync.isOnline"
-      class="flex items-center justify-center gap-2 bg-warning/10 text-warning text-xs font-medium px-4 py-2 border-b border-warning/20"
+      class="flex items-center justify-center gap-2 text-xs font-medium px-4 py-2 border-b"
+      style="background: color-mix(in srgb, var(--snug-butter) 70%, white); color: var(--snug-warning-ink); border-color: color-mix(in srgb, var(--snug-butter) 80%, var(--snug-border));"
     >
       <UIcon name="i-lucide-wifi-off" class="size-3.5" />
       You're offline — changes are saved on this device and will sync automatically.
@@ -16,7 +17,8 @@ const sync = useSyncStore()
     </div>
     <div
       v-else-if="sync.syncing || sync.pendingCount > 0"
-      class="flex items-center justify-center gap-2 bg-info/10 text-info text-xs font-medium px-4 py-2 border-b border-info/20"
+      class="flex items-center justify-center gap-2 text-xs font-medium px-4 py-2 border-b"
+      style="background: color-mix(in srgb, var(--snug-dusty-blue) 35%, white); color: var(--snug-info-ink); border-color: color-mix(in srgb, var(--snug-dusty-blue) 50%, var(--snug-border));"
     >
       <UIcon name="i-lucide-refresh-cw" class="size-3.5 animate-spin" />
       Syncing {{ sync.pendingCount }} offline change{{ sync.pendingCount === 1 ? '' : 's' }}…
@@ -24,7 +26,8 @@ const sync = useSyncStore()
     <div
       v-for="(fail, i) in sync.failedOps"
       :key="fail.op.id ?? i"
-      class="flex items-center justify-between gap-2 bg-error/10 text-error text-xs px-4 py-2 border-b border-error/20"
+      class="flex items-center justify-between gap-2 text-xs px-4 py-2 border-b"
+      style="background: color-mix(in srgb, var(--snug-rose) 45%, white); color: var(--snug-error-ink); border-color: color-mix(in srgb, var(--snug-rose) 60%, var(--snug-border));"
     >
       <span class="min-w-0 truncate">
         <span class="font-semibold">Couldn't sync:</span> {{ fail.op.description }} — {{ fail.message }}

@@ -35,7 +35,11 @@ async function submit() {
 </script>
 
 <template>
-  <UCard class="w-full max-w-sm" :ui="{ body: 'p-6 sm:p-7' }">
+  <UCard
+    class="w-full max-w-sm"
+    :ui="{ root: 'rounded-2xl overflow-hidden', body: 'p-6 sm:p-7' }"
+  >
+
     <template v-if="token">
       <h1 class="text-lg font-semibold mb-1">Choose a new password</h1>
       <p class="text-sm text-muted mb-6">Your new password must be at least 8 characters.</p>

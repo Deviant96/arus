@@ -75,15 +75,15 @@ const hasData = computed(() => (summary.value?.transactionCount ?? 0) > 0)
 const donutOption = computed(() => ({
   tooltip: {
     trigger: 'item',
-    backgroundColor: '#17171a',
-    borderColor: '#2a2a30',
-    textStyle: { color: '#e4e4e7', fontSize: 12 },
+    backgroundColor: '#FFFCF7',
+    borderColor: '#E4DDD0',
+    textStyle: { color: '#1C1917', fontSize: 12 },
     valueFormatter: (v: number) => money(Math.round(v * (currency.value === 'IDR' ? 1 : 100))),
   },
   series: [{
     type: 'pie',
     radius: ['58%', '85%'],
-    itemStyle: { borderColor: '#0a0a0b', borderWidth: 2 },
+    itemStyle: { borderColor: '#F4F0E8', borderWidth: 2 },
     label: { show: false },
     data: cats.value.slice(0, 9).map((c, i) => ({
       name: c.name,
@@ -97,13 +97,13 @@ const trendOption = computed(() => {
   const points = trend.value?.points ?? []
   return {
     tooltip: tooltip(),
-    legend: { textStyle: { color: '#8b8b94', fontSize: 11 }, top: 0, icon: 'circle' },
+    legend: { textStyle: { color: '#6B655D', fontSize: 11 }, top: 0, icon: 'circle' },
     grid: { left: 8, right: 8, top: 32, bottom: 8, containLabel: true },
     xAxis: {
       type: 'category',
       data: points.map(p => p.bucket.length === 10 ? p.bucket.slice(8) + '/' + p.bucket.slice(5, 7) : p.bucket),
       axisLabel,
-      axisLine: { lineStyle: { color: '#212126' } },
+      axisLine: { lineStyle: { color: '#E4DDD0' } },
       axisTick: { show: false },
     },
     yAxis: moneyAxis(),
@@ -112,15 +112,16 @@ const trendOption = computed(() => {
         name: 'Income',
         type: 'bar',
         data: points.map(p => minorToMajor(p.incomeMinor, currency.value)),
-        itemStyle: { color: '#10b981', borderRadius: [3, 3, 0, 0] },
+        itemStyle: { color: '#A8C5A8', borderRadius: [8, 8, 0, 0] },
         barMaxWidth: 18,
       },
       {
         name: 'Expenses',
         type: 'bar',
         data: points.map(p => minorToMajor(p.expenseMinor, currency.value)),
-        itemStyle: { color: '#f43f5e', borderRadius: [3, 3, 0, 0] },
+        itemStyle: { color: '#E8A07A', borderRadius: [8, 8, 0, 0] },
         barMaxWidth: 18,
+
       },
     ],
   }

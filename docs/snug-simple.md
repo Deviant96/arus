@@ -437,9 +437,11 @@ body {
 
 ---
 
-## 12. Nuxt UI / Arus mapping notes (future redesign)
+## 12. Nuxt UI / Arus mapping notes
 
-When applying this theme to Arus, keep logic untouched; restyle presentation:
+**Status:** Applied as the shipping Arus theme. Restore path remains [`design-system.md`](./design-system.md) (Banking Dark).
+
+When re-applying or porting, keep logic untouched; restyle presentation:
 
 | Area | Direction |
 |---|---|

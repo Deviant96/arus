@@ -23,7 +23,11 @@ async function submit() {
 </script>
 
 <template>
-  <UCard class="w-full max-w-sm" :ui="{ body: 'p-6 sm:p-7' }">
+  <UCard
+    class="w-full max-w-sm"
+    :ui="{ root: 'rounded-2xl overflow-hidden', body: 'p-6 sm:p-7' }"
+  >
+
     <template v-if="!sent">
       <h1 class="text-lg font-semibold mb-1">Reset your password</h1>
       <p class="text-sm text-muted mb-6">We'll send a reset link to your email if an account exists.</p>

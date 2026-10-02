@@ -18,22 +18,22 @@ function isActive(to: string) {
 </script>
 
 <template>
-  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-default bg-default/95 backdrop-blur pb-safe">
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-default bg-[var(--snug-surface)]/95 backdrop-blur pb-safe">
     <div class="grid grid-cols-5 items-center h-16">
       <NuxtLink
         v-for="item in left"
         :key="item.to"
         :to="item.to"
         class="flex flex-col items-center justify-center gap-1 h-full"
-        :class="isActive(item.to) ? 'text-primary' : 'text-muted'"
+        :class="isActive(item.to) ? 'text-[var(--snug-success-ink)]' : 'text-muted'"
       >
         <UIcon :name="item.icon" class="size-5" />
-        <span class="text-[10px] font-medium">{{ item.label }}</span>
+        <span class="text-[10px] font-semibold">{{ item.label }}</span>
       </NuxtLink>
 
       <div class="flex items-center justify-center">
         <button
-          class="flex items-center justify-center size-13 -mt-5 rounded-2xl bg-primary text-inverted shadow-lg shadow-primary/30 active:scale-95 transition-transform"
+          class="snug-fab snug-press flex items-center justify-center size-13 -mt-5 rounded-full active:scale-95 transition-transform"
           aria-label="Add transaction"
           @click="openQuickAdd()"
         >
@@ -46,10 +46,10 @@ function isActive(to: string) {
         :key="item.to"
         :to="item.to"
         class="flex flex-col items-center justify-center gap-1 h-full"
-        :class="isActive(item.to) ? 'text-primary' : 'text-muted'"
+        :class="isActive(item.to) ? 'text-[var(--snug-success-ink)]' : 'text-muted'"
       >
         <UIcon :name="item.icon" class="size-5" />
-        <span class="text-[10px] font-medium">{{ item.label }}</span>
+        <span class="text-[10px] font-semibold">{{ item.label }}</span>
       </NuxtLink>
     </div>
   </nav>

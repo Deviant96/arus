@@ -35,9 +35,10 @@ const progress = computed(() => {
         <span>{{ installment.paidCount }}/{{ installment.count }} paid</span>
         <span class="tnum">{{ money(installment.totalPaidMinor, installment.currency) }} of {{ money(installment.totalExpectedMinor, installment.currency) }}</span>
       </div>
-      <div class="h-1.5 rounded-full bg-elevated overflow-hidden">
-        <div class="h-full rounded-full bg-primary transition-all" :style="{ width: `${progress}%` }" />
+      <div class="h-2 rounded-full bg-[var(--snug-sand)]/50 overflow-hidden">
+        <div class="h-full rounded-full bg-[var(--snug-sage)] transition-all" :style="{ width: `${progress}%` }" />
       </div>
+
     </div>
 
     <div v-if="installment.nextItem" class="flex items-center justify-between mt-3 text-sm">

@@ -28,7 +28,11 @@ async function submit() {
 </script>
 
 <template>
-  <UCard class="w-full max-w-sm" :ui="{ body: 'p-6 sm:p-7' }">
+  <UCard
+    class="w-full max-w-sm"
+    :ui="{ root: 'rounded-2xl overflow-hidden', body: 'p-6 sm:p-7' }"
+  >
+
     <h1 class="text-lg font-semibold mb-1">Create your account</h1>
     <p class="text-sm text-muted mb-6">Free, fast and private — your data stays yours.</p>
 

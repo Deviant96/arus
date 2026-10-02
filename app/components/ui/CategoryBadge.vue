@@ -7,12 +7,13 @@ const props = defineProps<{
   fallbackIcon?: string
 }>()
 
-const color = computed(() => props.category?.color ?? '#64748b')
+const color = computed(() => props.category?.color ?? '#D4C4A8')
 const sizeClass = computed(() => ({
-  sm: 'size-7 rounded-lg',
-  md: 'size-9 rounded-xl',
-  lg: 'size-11 rounded-xl',
+  sm: 'size-7 rounded-xl',
+  md: 'size-9 rounded-2xl',
+  lg: 'size-11 rounded-2xl',
 }[props.size ?? 'md']))
+
 const iconClass = computed(() => ({ sm: 'size-3.5', md: 'size-4.5', lg: 'size-5' }[props.size ?? 'md']))
 </script>
 
@@ -20,7 +21,8 @@ const iconClass = computed(() => ({ sm: 'size-3.5', md: 'size-4.5', lg: 'size-5'
   <span
     class="flex items-center justify-center shrink-0"
     :class="sizeClass"
-    :style="{ backgroundColor: `${color}1f`, color }"
+    :style="{ backgroundColor: `${color}38`, color }"
+
   >
     <UIcon :name="category?.icon || fallbackIcon || 'i-lucide-tag'" :class="iconClass" />
   </span>

@@ -10,10 +10,11 @@ const { money } = useFormat()
 
 const pct = computed(() => Math.min(100, props.budget.percent))
 const barColor = computed(() => {
-  if (props.budget.percent >= 100) return 'bg-error'
-  if (props.budget.percent >= 85) return 'bg-warning'
-  return 'bg-primary'
+  if (props.budget.percent >= 100) return 'bg-[var(--snug-rose)]'
+  if (props.budget.percent >= 85) return 'bg-[var(--snug-butter)]'
+  return 'bg-[var(--snug-sage)]'
 })
+
 </script>
 
 <template>
@@ -28,9 +29,10 @@ const barColor = computed(() => {
         {{ budget.percent }}%
       </span>
     </div>
-    <div class="h-1.5 rounded-full bg-elevated overflow-hidden" role="progressbar" :aria-valuenow="budget.percent" aria-valuemin="0" aria-valuemax="100">
+    <div class="h-2 rounded-full bg-[var(--snug-sand)]/50 overflow-hidden" role="progressbar" :aria-valuenow="budget.percent" aria-valuemin="0" aria-valuemax="100">
       <div class="h-full rounded-full transition-all" :class="barColor" :style="{ width: `${pct}%` }" />
     </div>
+
     <div v-if="!compact" class="flex items-center justify-between mt-1 text-xs text-muted tnum">
       <span>{{ money(budget.spentMinor, budget.currency) }} spent</span>
       <span v-if="budget.remainingMinor >= 0">{{ money(budget.remainingMinor, budget.currency) }} left</span>

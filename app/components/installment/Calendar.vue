@@ -58,7 +58,8 @@ const statusDot: Record<string, string> = {
   upcoming: 'bg-info',
   late: 'bg-error',
   partially_paid: 'bg-warning',
-  skipped: 'bg-zinc-600',
+  skipped: 'bg-[var(--snug-sand)]',
+
 }
 
 const listItems = computed(() => [...items.value].sort((a, b) => a.dueDate.localeCompare(b.dueDate)))

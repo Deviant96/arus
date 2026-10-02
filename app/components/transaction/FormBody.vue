@@ -101,16 +101,16 @@ async function onDelete() {
     />
 
     <!-- Type -->
-    <div class="grid grid-cols-3 gap-1 p-1 rounded-xl bg-elevated/60" role="tablist" aria-label="Transaction type">
+    <div class="grid grid-cols-3 gap-1 p-1 rounded-full bg-[var(--snug-surface-muted)]" role="tablist" aria-label="Transaction type">
       <button
         v-for="t in typeItems"
         :key="t.value"
         type="button"
         role="tab"
         :aria-selected="form.type === t.value"
-        class="flex items-center justify-center gap-1.5 rounded-lg py-2 text-[13px] font-medium transition-all"
+        class="flex items-center justify-center gap-1.5 rounded-full py-2 text-[13px] font-semibold transition-all"
         :class="form.type === t.value
-          ? (t.value === 'income' ? 'bg-success/15 text-success' : t.value === 'transfer' ? 'bg-info/15 text-info' : 'bg-error/15 text-error')
+          ? (t.value === 'income' ? 'bg-[var(--snug-sage)]/50 text-[var(--snug-success-ink)]' : t.value === 'transfer' ? 'bg-[var(--snug-dusty-blue)]/45 text-[var(--snug-info-ink)]' : 'bg-[var(--snug-sand)]/70 text-[var(--snug-ink)]')
           : 'text-muted hover:text-highlighted'"
         :disabled="installmentLocked"
         @click="form.type = t.value"
@@ -120,6 +120,7 @@ async function onDelete() {
       </button>
     </div>
 
+
     <!-- Favorites & Smart Repeat -->
     <div v-if="!isEdit && form.type !== 'transfer' && (favorites.length || suggestions.length)" class="space-y-2">
       <div v-if="favorites.length" class="flex gap-1.5 overflow-x-auto scroll-thin -mx-1 px-1">
@@ -127,7 +128,8 @@ async function onDelete() {
           v-for="f in favorites.slice(0, 6)"
           :key="f.id"
           type="button"
-          class="flex items-center gap-1.5 shrink-0 rounded-full border border-amber-400/25 bg-amber-400/10 pl-2 pr-2.5 py-1.5 text-[12px] font-medium text-amber-300/90 hover:bg-amber-400/15 transition-colors"
+          class="flex items-center gap-1.5 shrink-0 rounded-full border border-[var(--snug-butter)] bg-[var(--snug-butter)]/55 pl-2 pr-2.5 py-1.5 text-[12px] font-medium text-[var(--snug-ink)] hover:bg-[var(--snug-butter)] transition-colors"
+
           @click="applyFavorite(f)"
         >
           <UIcon name="i-lucide-star" class="size-3" />
