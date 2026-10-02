@@ -22,7 +22,14 @@ export function defineApiHandler<T extends EventHandlerRequest, D>(handler: (eve
       }
       // h3 errors (createError) pass through untouched
       if (err && typeof err === 'object' && 'statusCode' in err) throw err
-      console.error('[api] unexpected error:', err?.message ?? err)
+      // Drizzle wraps the driver error as "Failed query: …"; the useful
+      // Postgres detail lives on `cause` (e.g. relation does not exist).
+      const cause = err?.cause
+      const detail = cause?.message || cause?.code || err?.code
+      console.error(
+        '[api] unexpected error:',
+        detail ? `${detail} | ${err?.message ?? err}` : (err?.message ?? err),
+      )
       throw createError({
         statusCode: 500,
         statusMessage: 'Something went wrong on our side. Please try again.',

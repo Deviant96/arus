@@ -2,17 +2,18 @@ services:
   app:
     build: .
     restart: unless-stopped
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    # Share the host network so the app can reach native Postgres on
+    # 127.0.0.1:5432. Port mapping is unused in this mode — the process
+    # binds APP_PORT directly on the VPS (default 3100).
+    network_mode: host
     environment:
-      NUXT_DATABASE_URL: postgres://arus:arus@host.docker.internal:5432/arus
-      DATABASE_URL: postgres://arus:arus@host.docker.internal:5432/arus
+      HOST: 0.0.0.0
+      PORT: ${APP_PORT:-3100}
+      NUXT_DATABASE_URL: postgres://arus:arus@127.0.0.1:5432/arus
+      DATABASE_URL: postgres://arus:arus@127.0.0.1:5432/arus
       NUXT_SESSION_PASSWORD: ${NUXT_SESSION_PASSWORD:-change-me-to-a-long-random-string-at-least-32}
       NUXT_AI_ENCRYPTION_KEY: ${NUXT_AI_ENCRYPTION_KEY:-change-me-to-another-long-random-string}
       NUXT_PUBLIC_APP_URL: ${NUXT_PUBLIC_APP_URL:-http://localhost:3100}
       NUXT_OAUTH_GOOGLE_CLIENT_ID: ${NUXT_OAUTH_GOOGLE_CLIENT_ID:-}
       NUXT_OAUTH_GOOGLE_CLIENT_SECRET: ${NUXT_OAUTH_GOOGLE_CLIENT_SECRET:-}
       MIGRATIONS_DIR: /app/server/database/migrations
-    ports:
-      # Host port is APP_PORT (default 3100). Container still listens on 3000.
-      - "${APP_PORT:-3100}:3000"
